@@ -1,0 +1,8 @@
+version.txt
+*.old
+Test*.xml
+appveyor.yml
+build.ps1
+psakeBuild.ps1
+psscreenfetch.psdeploy.ps1
+BuildHelp.ps1
