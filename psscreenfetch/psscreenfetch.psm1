@@ -11,6 +11,8 @@
 	===========================================================================
 #>
 
+$script:PSScreenFetchRoot = $PSScriptRoot
+
 #region retrieve OS Information
 $OS = Get-CimInstance Win32_OperatingSystem
 #endregion
@@ -21,7 +23,7 @@ Function Invoke-PSScreenfetch {
     param()
 
     if ($OS.name -like "*Windows 10*") {
-        & .\psscreenfetch\OS\windows10.ps1
+        .$PSScreenFetchRoot\OS\windows10.ps1
     }
     else {
         throw 'Only Windows 10 Operating Systems are currently supported'
