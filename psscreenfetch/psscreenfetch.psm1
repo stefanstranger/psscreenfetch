@@ -13,19 +13,12 @@
 
 $script:PSScreenFetchRoot = $PSScriptRoot
 
+(Join-Path $PSScriptRoot Private\*.ps1 -Resolve -ErrorAction SilentlyContinue).ForEach{ . $_ }
+(Join-Path $PSScriptRoot Public\*.ps1 -Resolve).ForEach{ . $_  }
+
+Export-ModuleMember -Function "*-*" -Alias "screenfetch"
+
 #region retrieve OS Information
-$OS = Get-CimInstance Win32_OperatingSystem
+. $PSScriptRoot\Private\Get-OSInformation.ps1
 #endregion
 
-Function Invoke-PSScreenfetch {
-    [CmdletBinding()]
-    [Alias('screenfetch')]
-    param()
-
-    if ($OS.name -like "*Windows 10*") {
-        .$PSScreenFetchRoot\OS\windows10.ps1
-    }
-    else {
-        throw 'Only Windows 10 Operating Systems are currently supported'
-    }
-}
