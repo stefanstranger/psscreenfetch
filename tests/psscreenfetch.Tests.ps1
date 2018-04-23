@@ -76,6 +76,7 @@ Describe -Name 'Test Functions in psscreenfetch Module' -Fixture {
     Context -Name 'Testing Public Functions' -Fixture {
 
         It -name 'Passes Invoke-PSScreenFetch Function' -test {
+            Mock Get-OSInformation { return @{name = "windows 10"} } -ModuleName psscreenfetch
             Invoke-PSScreenFetch | Should Not Be $null
         }
     }

@@ -3,7 +3,11 @@ Function Invoke-PSScreenfetch {
     [Alias('screenfetch')]
     param()
 
+    Write-Verbose -Message 'Calling Get-OSInformation Function'
+    $OS = Get-OSInformation
+
     if ($OS.name -like "*Windows 10*") {
+
         .$PSScreenFetchRoot\OS\windows10.ps1
     }
     else {
