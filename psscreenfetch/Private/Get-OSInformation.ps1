@@ -11,6 +11,7 @@ Function Get-OSInformation {
             Uptime      = [math]::Round(((New-TimeSpan -Start $OS.LastBootUpTime -end (Get-Date)).TotalMinutes), 0)
             RAMTotal    = ([math]::round($OS.TotalVisibleMemorySize / 1024, 0))
             RAMFree     = ([math]::round($OS.FreePhysicalMemory / 1024, 0))
+            CPUInfo     = $(Get-CimInstance Win32_Processor).Name
         }
         $object
     }
