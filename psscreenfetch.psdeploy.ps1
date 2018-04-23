@@ -48,9 +48,7 @@ if (
             FromSource $ENV:BHPSModulePath
             To AppVeyor
             WithOptions @{
-                Version     = $env:APPVEYOR_BUILD_VERSION
-                ClientID    = $env:ClientID
-                AccessToken = $env:AccessToken
+                Version = $env:APPVEYOR_BUILD_VERSION
             }
         }
     }
